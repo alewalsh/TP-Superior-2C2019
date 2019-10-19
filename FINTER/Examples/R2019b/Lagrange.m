@@ -3,7 +3,7 @@ function p = Lagrange(x,y,mostrarPasos)
     p=0;
     t = sym('x'); % creo la variable simbólica x para reemplazar en la función
     n = length(x);
-
+    
     for i=1:n
         L=1;
         for j=1:n
@@ -17,5 +17,4 @@ function p = Lagrange(x,y,mostrarPasos)
         p = p+L*y(i);
         p= simplify(p);
     end
-    
 end

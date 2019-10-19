@@ -22,16 +22,20 @@ while i ~= 5
         case 2
             p = Lagrange(x,y,1);
             disp(strcat('P(x) = ', char(p)));
-            disp('---------------------------');
         case 3
             k = input('Ingrese el valor: ');
             disp(char(subs(p, t, k))); % subs sustituye la variable simbólica t en p por el valor k
-            disp('---------------------------');
         case 4
             disp('4')
         otherwise
             disp('Opción no válida')
     end
+    disp('---------------------------');
+    disp('1. Ingresar datos');
+    disp('2. Mostrar pasos de cálculo');
+    disp('3. Especializar el polinomio en un valor K');
+    disp('4. Alterar valores iniciales');
+    disp('5. Finalizar');
     i=input('Seleccione su opción: ');
 end
 disp('Gracias por utilizar FINTER')

@@ -1,10 +1,10 @@
 function MenuIngresarDatos()
     global x y p;
-    n=input('Ingresar cantidad de puntos: ');
-    for i=1:n
-        x(i)=input('Ingresar x: ');
-        y(i)=input('Ingresar y: ');
-    end
+    
+    % Ingresar datos entre []
+    % ejemplo [1,2,3]
+    x=input('Ingresar las x: ');
+    y=input('Ingresar las f(x): ');
     
     clc;
     disp('IngresarDatos');
@@ -16,12 +16,8 @@ function MenuIngresarDatos()
     while i ~= 3
         switch i
             case 1
-                if length(x) > 1
-                    p = Lagrange(x,y,0);
-                    disp(strcat('P(x) = ', char(p)));
-                else
-                    disp(strcat('P(x) = ', char(y)));
-                end
+                p = Lagrange(x,y,0);
+                disp(strcat('P(x) = ', char(p)));
             case 2
                 disp('2')
             otherwise
