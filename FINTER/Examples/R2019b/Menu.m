@@ -3,9 +3,11 @@ global x y t p;
 % p es el polinomio calculado, puede ser Lagrange o Newton, lo guardo para
 % calcular P(k) según el polinomio que tengamos
 
-clc;
+
 disp('---------------------------');
 disp('Bienvenido a FINTER');
+disp('---------------------------');
+clc;
 disp('1. Ingresar datos');
 disp('2. Mostrar pasos de cálculo');
 disp('3. Especializar el polinomio en un valor K');
@@ -27,6 +29,8 @@ while i ~= 5
             disp(char(subs(p, t, k))); % subs sustituye la variable simbólica t en p por el valor k
         case 4
             disp('4')
+        case 5
+            break
         otherwise
             disp('Opción no válida')
     end
@@ -37,6 +41,6 @@ while i ~= 5
     disp('4. Alterar valores iniciales');
     disp('5. Finalizar');
     i=input('Seleccione su opción: ');
-end
 disp('Gracias por utilizar FINTER')
 close all;
+end

@@ -1,4 +1,4 @@
-function pol = NGProgresivo(x,y, mostrarPasos)
+function p = NGProgresivo(x,y, mostrarPasos)
     p=0;
     symbolX = sym('x');
 	n = length(x);
@@ -32,6 +32,4 @@ function pol = NGProgresivo(x,y, mostrarPasos)
         disp(p);
     end
     p = simplify(p);
-    disp('El polinomio es:');
-	disp(p);
 end
