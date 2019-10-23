@@ -3,49 +3,50 @@ function MenuIngresarDatos()
     % t es la variable simbólica del polinomio
     % p es el polinomio calculado, puede ser Lagrange o Newton, lo guardo para
     % calcular P(k) según el polinomio que tengamos
-    % e es para decir que existe un conjunto de datos para evitar entrar en lugares de calculo, sin datos
+    % e es para decir que existe un polinomio calculado de un conjunto de datos para evitar entrar en lugares de calculo, sin datos
     
     mostrarPasos = '3. Mostrar/Esconder los pasos del calculo (Escondidos)';
     pasos = 0;
     
-    
-    cargarDatos();
+    cargarDatos(); 
 
 
-    disp('---------------------------');
-    disp('Acciones:');
-    disp('1. Interpolar por Lagrange');
-    disp('2. Interpolar por Newton');
-    disp(mostrarPasos);
-    disp('4. Especializar ultimo polinomio calculado en un valor K')
-    disp('5. Volver a cargar datos')
-    disp('6. Volver al menú principal');
-    i=input('Seleccione su opción: ');
+
     
     while 1
+        
+            disp('---------------------------');
+            disp('Acciones:');
+            disp('1. Interpolar por Lagrange');
+            disp('2. Interpolar por Newton');
+            disp(mostrarPasos);
+            disp('4. Especializar ultimo polinomio calculado en un valor K')
+            disp('5. Volver a cargar datos')
+            disp('6. Salir');
+            i=input('Seleccione su opción: ');
         
         switch i
             
             case 1 %calcular el polinomio con Lagrange
                 p = Lagrange(x,y,pasos);
-                e = 1;
+                e = true;
                 output(p);
                 
             case 2 %calcular el polinomio con Newton Gregory
                 disp('---------------------------');
 		disp('1. Interpolar por Newton Gregory Progresivo');
 		disp('2. Interpolar por Newton Gregory Regresivo');
-		disp('Otro. Volver');
+		disp('Otro numero. Volver');
 		j=input('Seleccione su accion: ');
 		
 		switch j
    			case 1 %calcular el polinomio con Newton Gregory Progresivo
 			     p = NGProgresivo(x,y,pasos);
-                             e = 1;
+                             e = true;
 		             output(p);
    			case 2 %calcular el polinomio con Newton Gregory Regresivo
 			     p = NGRegresivo(x,y,pasos);
-                             e = 1;
+                             e = true;
 			     output(p);
 			otherwise
 		end
@@ -72,24 +73,11 @@ function MenuIngresarDatos()
             case 5 %cargar un nuevo juego de datos
                 cargarDatos();
                 
-       	    case 6 %salir al menu principal para reingresar datos o salir
-                disp('Gracias por utilizar FINTER');
-		close all;
-  
+       	    case 6 %salir al menu principal para salir
+                break;
             otherwise
                 disp('Opción no válida');
-                
         end
-        disp('---------------------------');
-        disp('Acciones:');
-        disp('1. Interpolar por Lagrange');
-        disp('2. Interpolar por Newton');
-        disp(mostrarPasos);
-        disp('4. Especializar ultimo polinomio calculado en un valor K')
-        disp('5. Volver a cargar datos')
-        disp('6. Salir del programa');
-        i=input('Seleccione su opción: ');
-        
     end
 end
 
