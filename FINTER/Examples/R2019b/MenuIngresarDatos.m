@@ -1,35 +1,27 @@
 function MenuIngresarDatos()
     global x y p t e;
+    % t es la variable simbólica del polinomio
+    % p es el polinomio calculado, puede ser Lagrange o Newton, lo guardo para
+    % calcular P(k) según el polinomio que tengamos
+    % e es para decir que existe un conjunto de datos para evitar entrar en lugares de calculo, sin datos
     
     mostrarPasos = '3. Mostrar/Esconder los pasos del calculo (Escondidos)';
     pasos = 0;
     
-    disp('Ingresar datos entre []');
-    disp('ejemplo [1,2,3,3.1415]');
-    x=input('Ingresar las x: ');
-    y=input('Ingresar las f(x): ');
+    
+    cargarDatos();
 
-    conjuntoIncorrecto = true; 
-    while conjuntoIncorrecto  
-       if(not(isempty(x)) && not(isempty(y)) && (size(x, 2) == size(y, 2)) ) %chequeo que existan, tenga al menos un valor y coincidan el tamaño (el 2 es la 2da dimension de la matriz 1*n)
-           conjuntoIncorrecto = false;
-       else
-           disp('por favor, ingrese datos y asegurese que haya igual cantidad');
-           disp('Ingresar datos entre []');
-           disp('ejemplo [1,2,3.1415]');
-           x=input('Ingresar las x: ');
-           y=input('Ingresar las f(x): ');
-       end
-    end
+
     disp('---------------------------');
-    disp('Ingresar Datos');
+    disp('Acciones:');
     disp('1. Interpolar por Lagrange');
     disp('2. Interpolar por Newton');
     disp(mostrarPasos);
     disp('4. Especializar ultimo polinomio calculado en un valor K')
-    disp('5. Volver al menú principal');
+    disp('5. Volver a cargar datos')
+    disp('6. Volver al menú principal');
     i=input('Seleccione su opción: ');
-        
+    
     while 1
         
         switch i
@@ -41,11 +33,11 @@ function MenuIngresarDatos()
                 
             case 2 %calcular el polinomio con Newton Gregory
                 disp('---------------------------');
-		disp('Ingresar Datos:');
 		disp('1. Interpolar por Newton Gregory Progresivo');
 		disp('2. Interpolar por Newton Gregory Regresivo');
 		disp('Otro. Volver');
-		j=input('');
+		j=input('Seleccione su accion: ');
+		
 		switch j
    			case 1 %calcular el polinomio con Newton Gregory Progresivo
 			     p = NGProgresivo(x,y,pasos);
@@ -76,21 +68,26 @@ function MenuIngresarDatos()
                 else
                     disp('Primero debe calcularse un polinomio');
                 end
+            
+            case 5 %cargar un nuevo juego de datos
+                cargarDatos();
                 
-       	    case 5 %salir al menu principal para reingresar datos o salir
-		break
+       	    case 6 %salir al menu principal para reingresar datos o salir
+                disp('Gracias por utilizar FINTER');
+		close all;
   
             otherwise
                 disp('Opción no válida');
                 
         end
         disp('---------------------------');
-        disp('Ingresar Datos');
+        disp('Acciones:');
         disp('1. Interpolar por Lagrange');
         disp('2. Interpolar por Newton');
         disp(mostrarPasos);
         disp('4. Especializar ultimo polinomio calculado en un valor K')
-        disp('5. Volver al menú principal');
+        disp('5. Volver a cargar datos')
+        disp('6. Salir del programa');
         i=input('Seleccione su opción: ');
         
     end
@@ -99,4 +96,25 @@ end
 function output(p)
 	mensaje = {'P(x) = ', char(p), '---------------------------'};
 	fprintf('%s%s\n%s%s\n%s\n', mensaje{3}, mensaje{3}, mensaje{1}, mensaje{2}, mensaje{3});
+end
+
+function cargarDatos()
+    global x y;
+    disp('Ingresar datos entre []');
+    disp('ejemplo [1,2,3,3.1415]');
+    x=input('Ingresar las x: ');
+    y=input('Ingresar las y=f(x): ');
+    
+    conjuntoIncorrecto = true; 
+    while conjuntoIncorrecto  
+       if(not(isempty(x)) && not(isempty(y)) && (size(x, 2) == size(y, 2)) ) %chequeo que existan, tenga al menos un valor y coincidan el tamaño (el 2 es la 2da dimension de la matriz 1*n)
+           conjuntoIncorrecto = false;
+       else
+           disp('por favor, ingrese datos y asegurese que haya igual cantidad');
+           disp('Ingresar datos entre []');
+           disp('ejemplo [1,2,3.1415]');
+           x=input('Ingresar las x: ');
+           y=input('Ingresar las f(x): ');
+       end
+    end
 end
