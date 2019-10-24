@@ -7,12 +7,7 @@ function MenuIngresarDatos()
     
     mostrarPasos = '3. Mostrar/Esconder los pasos del calculo (Escondidos)';
     pasos = 0;
-    
-    cargarDatos(); 
-
-
-
-    
+    cargarDatos();     
     while 1
         
             disp('---------------------------');
@@ -34,23 +29,23 @@ function MenuIngresarDatos()
                 
             case 2 %calcular el polinomio con Newton Gregory
                 disp('---------------------------');
-		disp('1. Interpolar por Newton Gregory Progresivo');
-		disp('2. Interpolar por Newton Gregory Regresivo');
-		disp('Otro numero. Volver');
-		j=input('Seleccione su accion: ');
+				disp('1. Interpolar por Newton Gregory Progresivo');
+				disp('2. Interpolar por Newton Gregory Regresivo');
+				disp('Otro numero. Volver');
+				j=input('Seleccione su accion: ');
 		
-		switch j
-   			case 1 %calcular el polinomio con Newton Gregory Progresivo
-			     p = NGProgresivo(x,y,pasos);
-                             e = true;
-		             output(p);
-   			case 2 %calcular el polinomio con Newton Gregory Regresivo
-			     p = NGRegresivo(x,y,pasos);
-                             e = true;
-			     output(p);
-			otherwise
-		end
-  
+				switch j
+					case 1 %calcular el polinomio con Newton Gregory Progresivo
+						 p = NGProgresivo(x,y,pasos);
+						 e = true;
+						 output(p);
+					case 2 %calcular el polinomio con Newton Gregory Regresivo
+						 p = NGRegresivo(x,y,pasos);
+						 e = true;
+						 output(p);
+					otherwise
+						disp('Opcion no valida');
+                end
             case 3 %Mostrar los pasos al calcular el algoritmo
                 if pasos == 0
                     mostrarPasos = '3. Mostrar/Esconder los pasos del calculo (Mostrar)';
@@ -76,7 +71,7 @@ function MenuIngresarDatos()
        	    case 6 %salir al menu principal para salir
                 break;
             otherwise
-                disp('Opción no válida');
+                disp('Opcion no valida');
         end
     end
 end

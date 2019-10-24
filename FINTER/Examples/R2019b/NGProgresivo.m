@@ -1,6 +1,7 @@
 function p = NGProgresivo(x,y, mostrarPasos)
+    global t;
     p=0;
-    symbolX = sym('x');
+    t = sym('x');
 	n = length(x);
 	DD = zeros(n);
 	DD(:,1)=y;
@@ -22,7 +23,7 @@ function p = NGProgresivo(x,y, mostrarPasos)
         pol2 = 1;
         for o=1:length(x)
             if (o < z)
-                pol2 = pol2*(symbolX-x(o));
+                pol2 = pol2*(t-x(o));
             end
         end
         p = p+(coeficientes(z)*pol2); 
