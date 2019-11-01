@@ -26,6 +26,8 @@ function MenuIngresarDatos()
                 p = Lagrange(x,y,pasos);
                 e = true;
                 output(p);
+                outputGradoPolinomio();
+
                 
             case 2 %calcular el polinomio con Newton Gregory
                 disp('---------------------------');
@@ -39,13 +41,15 @@ function MenuIngresarDatos()
 						 p = NGProgresivo(x,y,pasos);
 						 e = true;
 						 output(p);
+                                                 outputGradoPolinomio();
 					case 2 %calcular el polinomio con Newton Gregory Regresivo
 						 p = NGRegresivo(x,y,pasos);
 						 e = true;
 						 output(p);
+                                                 outputGradoPolinomio();
 					otherwise
 						disp('Opcion no valida');
-                end
+                                 end
             case 3 %Mostrar los pasos al calcular el algoritmo
                 if pasos == 0
                     mostrarPasos = '3. Mostrar/Esconder los pasos del calculo (Mostrar)';
@@ -66,7 +70,43 @@ function MenuIngresarDatos()
                 end
             
             case 5 %cargar un nuevo juego de datos
-                cargarDatos();
+                while 1
+                    
+                disp('---------------------------');
+		disp('1. Agregar elemento');
+		disp('2. Quitar elemento');
+                disp('3. Volver a ingresar todos los datos');
+		disp('Otro numero. Volver');
+		j=input('Seleccione su accion: ');
+                switch j
+                    case 1
+                        disp('Ingrese el valor X a agregar:');
+                        nuevoX=input('');
+                        disp('Ingrese el valor F(x) a agregar:');
+                        nuevoFx=input('');
+                        if not(isempty( str2double( nuevoX ) )) && not(isempty( str2double( nuevoX ) ))
+                            x = agregarElemento(x,nuevoX);
+                            y = agregarElemento(y,nuevoFx);
+                            disp('conjunto de X');
+                            disp(x);
+                            disp('conjunto de F(x)');
+                            disp(y);
+                        else
+                            disp('ingrese nuevamente los valores')
+                        end
+                     case 2
+                         disp('A continuacion se muestran los valores cargados. Ingrese la posicion del valor a borrar:');
+                         disp(x);
+                         indice=input('');
+                         x = eliminarElemento(x,indice);
+                         y = eliminarElemento(y,indice);
+                     case 3
+                         cargarDatos();
+                         break
+                    otherwise   
+                         break
+                    end
+                end
                 
        	    case 6 %salir al menu principal para salir
                 break;
@@ -77,8 +117,21 @@ function MenuIngresarDatos()
 end
 
 function output(p)
-	mensaje = {'P(x) = ', char(p), '---------------------------'};
-	fprintf('%s%s\n%s%s\n%s\n', mensaje{3}, mensaje{3}, mensaje{1}, mensaje{2}, mensaje{3});
+    mensaje = {'P(x) = ', char(p), '---------------------------'};
+    fprintf('%s\n%s\n%s%s\n%s\n', mensaje{3}, mensaje{3}, mensaje{1}, mensaje{2}, mensaje{3});
+end
+
+
+function matriz = eliminarElemento(matriz, indice)
+    tamanio = size(matriz);
+    if(indice <= tamanio(1,2))
+        matriz(indice)=[];
+    end
+end
+
+function matriz = agregarElemento(matriz, elemento)
+    tamanio = size(matriz);
+    matriz(1, tamanio(1,2)+1)= elemento;
 end
 
 function cargarDatos()
@@ -90,7 +143,7 @@ function cargarDatos()
     
     conjuntoIncorrecto = true; 
     while conjuntoIncorrecto  
-       if(not(isempty(x)) && not(isempty(y)) && (size(x, 2) == size(y, 2)) ) %chequeo que existan, tenga al menos un valor y coincidan el tamaño (el 2 es la 2da dimension de la matriz 1*n)
+       if(chequearXY() ) %chequeo que existan, tenga al menos un valor y coincidan el tamaño (el 2 es la 2da dimension de la matriz 1*n)
            conjuntoIncorrecto = false;
        else
            disp('por favor, ingrese datos y asegurese que haya igual cantidad');
@@ -100,4 +153,17 @@ function cargarDatos()
            y=input('Ingresar las f(x): ');
        end
     end
+end
+
+function outputGradoPolinomio()
+    global p;
+    tamanioPol = size(coeffs(p,'All'));
+    grado = tamanioPol(1,2)-1;
+    display = "grado del polinomio: " + grado;
+    output(display);
+end
+
+function bool = chequearXY()
+    global x y;
+    bool = not(isempty(x)) && not(isempty(y)) && (size(x, 2) == size(y, 2));
 end
