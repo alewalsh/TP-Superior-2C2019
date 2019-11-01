@@ -16,13 +16,13 @@ function p = NGRegresivo(x,y, mostrarPasos)
     end
     [filas,columnas] = size(DD);
     coeficientes = zeros(columnas);
-    for t=1:columnas
-        coeficientes(t) = DD(filas,t);
+    for v=1:columnas
+        coeficientes(v) = DD(filas,v);
     end
-    if (mostrarPasos == 1)
-        disp('Los coeficientes del polinomio son:');
-        disp(coeficientes);
-    end
+    %if (mostrarPasos == 1)
+    %   disp('Los coeficientes del polinomio son:');
+    %    disp(coeficientes(:,1));
+    %end
     for z=1:length(coeficientes)
         pol2 = 1;
         for o=1:length(x)
@@ -30,11 +30,20 @@ function p = NGRegresivo(x,y, mostrarPasos)
                 pol2 = pol2*(t-x(length(x)-(o-1)));
             end
         end
-        p = p+(coeficientes(z)*pol2); 
+        p = p+(coeficientes(z)*pol2);
     end
-    if (mostrarPasos == 1)
-        disp('El polinomio sin factorizar es:');
-        disp(p);
-    end
+    %if (mostrarPasos == 1)
+    %    disp('El polinomio sin factorizar es:');
+    %    disp(p);
+    %end
     p = simplify(p);
+    if (mostrarPasos == 1)
+        disp('El grado del polinomio es:');
+        disp(polynomialDegree(p));
+        if(sonPuntosEquiespaciados(x))
+            disp('Los puntos ingresados son equiespaciados');
+        else
+            disp('Los puntos ingresados NO son equiespaciados');
+        end
+    end
 end

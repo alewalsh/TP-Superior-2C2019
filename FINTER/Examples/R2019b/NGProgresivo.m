@@ -15,10 +15,10 @@ function p = NGProgresivo(x,y, mostrarPasos)
         disp(DD);
     end
     coeficientes = diag(DD);
-    if (mostrarPasos == 1)
-        disp('Los coeficientes del polinomio son:');
-        disp(coeficientes);
-    end
+    %if (mostrarPasos == 1)
+    %    disp('Los coeficientes del polinomio son:');
+    %    disp(coeficientes);
+    %end
     for z=1:length(coeficientes)
         pol2 = 1;
         for o=1:length(x)
@@ -28,9 +28,18 @@ function p = NGProgresivo(x,y, mostrarPasos)
         end
         p = p+(coeficientes(z)*pol2); 
     end
-    if (mostrarPasos == 1)
-        disp('El polinomio sin factorizar es:');
-        disp(p);
-    end
+    %if (mostrarPasos == 1)
+    %    disp('El polinomio sin factorizar es:');
+    %    disp(p);
+    %end
     p = simplify(p);
+    if (mostrarPasos == 1)
+        disp('El grado del polinomio es:');
+        disp(polynomialDegree(p));
+        if(sonPuntosEquiespaciados(x))
+            disp('Los puntos ingresados son equiespaciados');
+        else
+            disp('Los puntos ingresados NO son equiespaciados');
+        end
+    end
 end

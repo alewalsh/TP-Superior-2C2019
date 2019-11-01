@@ -15,6 +15,15 @@ function p = Lagrange(x,y,mostrarPasos)
             disp(strcat("L", num2str(i-1),"(x) = ", char(L)));
         end
         p = p+L*y(i);
-        p= simplify(p);
+        p= simplify(p);        
     end
+    if (mostrarPasos == 1)
+            disp('El grado del polinomio es:');
+            disp(polynomialDegree(p));
+            if(sonPuntosEquiespaciados(x))
+                disp('Los puntos ingresados son equiespaciados');
+            else
+                disp('Los puntos ingresados NO son equiespaciados');
+            end
+        end
 end

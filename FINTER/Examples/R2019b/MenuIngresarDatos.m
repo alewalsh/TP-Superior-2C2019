@@ -25,10 +25,7 @@ function MenuIngresarDatos()
             case 1 %calcular el polinomio con Lagrange
                 p = Lagrange(x,y,pasos);
                 e = true;
-                output(p);
-                outputGradoPolinomio();
-
-                
+                output(p);                
             case 2 %calcular el polinomio con Newton Gregory
                 disp('---------------------------');
 				disp('1. Interpolar por Newton Gregory Progresivo');
@@ -41,12 +38,10 @@ function MenuIngresarDatos()
 						 p = NGProgresivo(x,y,pasos);
 						 e = true;
 						 output(p);
-                                                 outputGradoPolinomio();
 					case 2 %calcular el polinomio con Newton Gregory Regresivo
 						 p = NGRegresivo(x,y,pasos);
 						 e = true;
 						 output(p);
-                                                 outputGradoPolinomio();
 					otherwise
 						disp('Opcion no valida');
                                  end
@@ -153,14 +148,6 @@ function cargarDatos()
            y=input('Ingresar las f(x): ');
        end
     end
-end
-
-function outputGradoPolinomio()
-    global p;
-    tamanioPol = size(coeffs(p,'All'));
-    grado = tamanioPol(1,2)-1;
-    display = "grado del polinomio: " + grado;
-    output(display);
 end
 
 function bool = chequearXY()
