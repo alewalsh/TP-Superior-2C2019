@@ -22,13 +22,14 @@ end
 function IngresoDatos_OpeningFcn(hObject, eventdata, handles, varargin)
 handles.output = hObject;
 guidata(hObject, handles);
-global i j x y t p
+global i j x y t p e
 x = 1;
 y = 1;
 t = 1;
 p = 1;
 i = 1;
 j = 1;
+e = false;
 
 
 function varargout = IngresoDatos_OutputFcn(hObject, eventdata, handles) 
@@ -96,17 +97,19 @@ end
 
 function pushbutton5_Callback(hObject, eventdata, handles)
 disp('---------------------------');
-global x y
+global x y e p
 p = Lagrange(x,y,1);
+e = true;
 disp(strcat('P(x) = ', char(p)));
 disp('---------------------------');
 disp('El vector x es: ');
-texto = "";
-for a=1:3
-    texto = texto + string(x(a)) + newline;    
-end
+%texto = "";
+texto = strcat('P(x) = ', char(p));
+%for a=1:3
+%    texto = texto + string(x(a)) + newline;    
+%end
 set(handles.text4,'String',texto);
-
+%save variables x y e p
 
 function listbox2_Callback(hObject, eventdata, handles)
 
@@ -142,3 +145,12 @@ if not(isempty(listaDeObjetos))
 else
     warndlg("La lista se encuentra vacía.", "Advertencia");
 end
+
+
+% --- Executes on button press in pushbutton7.
+function pushbutton7_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton7 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+menuIG;
+close(handles.figure1);
