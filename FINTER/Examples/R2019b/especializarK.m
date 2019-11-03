@@ -57,7 +57,7 @@ handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
-global i j x y t p e
+global p
 
 texto=strcat('P(x) =  ', char(p));
 disp(strcat('P(x) = ', char(p)));
@@ -113,17 +113,12 @@ function calcular_Callback(hObject, eventdata, handles)
 % hObject    handle to calcular (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global e p t
-
-if e
-    k= handles.metricdata.k;
-    disp(char(subs(p, t, k))); % subs sustituye la variable simbólica t en p por el valor k
-    resultado = char(subs(p, t, k));
-    set(handles.resultado, 'String', resultado);
-
-else
-    disp('Primero debe calcularse un polinomio');
-end
+global p t
+    
+k= handles.metricdata.k;
+disp(char(subs(p, t, k))); % subs sustituye la variable simbólica t en p por el valor k
+resultado = char(subs(p, t, k));
+set(handles.resultado, 'String', resultado);
 
 
 % --- Executes on button press in volver.

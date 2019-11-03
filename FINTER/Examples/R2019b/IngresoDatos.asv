@@ -22,6 +22,7 @@ end
 function IngresoDatos_OpeningFcn(hObject, eventdata, handles, varargin)
 handles.output = hObject;
 guidata(hObject, handles);
+global i j x y t p e
 
 
 function varargout = IngresoDatos_OutputFcn(hObject, eventdata, handles) 

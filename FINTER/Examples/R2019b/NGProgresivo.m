@@ -1,5 +1,5 @@
 function p = NGProgresivo(x,y, mostrarPasos)
-    global t;
+    global t pasito;
     p=0;
     t = sym('x');
 	n = length(x);
@@ -10,10 +10,11 @@ function p = NGProgresivo(x,y, mostrarPasos)
 			DD(J,k)=[DD(J,k-1)-DD(J-1,k-1)]/[x(J)-x(J-k+1)];
 		end
     end
-    if (mostrarPasos == 1)
+%    if (mostrarPasos == 1)
         disp('La matriz de diferencias divididas es:');
+        pasito=DD;
         disp(DD);
-    end
+ %   end
     coeficientes = diag(DD);
     %if (mostrarPasos == 1)
     %    disp('Los coeficientes del polinomio son:');
@@ -33,7 +34,7 @@ function p = NGProgresivo(x,y, mostrarPasos)
     %    disp(p);
     %end
     p = simplify(p);
-    if (mostrarPasos == 1)
+  %  if (mostrarPasos == 1)
         disp('El grado del polinomio es:');
         disp(polynomialDegree(p));
         if(sonPuntosEquiespaciados(x))
@@ -41,5 +42,5 @@ function p = NGProgresivo(x,y, mostrarPasos)
         else
             disp('Los puntos ingresados NO son equiespaciados');
         end
-    end
+   % end
 end

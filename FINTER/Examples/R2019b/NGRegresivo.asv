@@ -8,13 +8,13 @@ function p = NGRegresivo(x,y, mostrarPasos)
 	for k=2:n
 		for J=k:n
 			DD(J,k)=[DD(J,k-1)-DD(J-1,k-1)]/[x(J)-x(J-k+1)];
-        end
-	end
-    %if (mostrarPasos == 1)
+		end
+    end
+    if (mostrarPasos == 1)
         disp('La matriz de diferencias divididas es:');
         pasito=DD;
         disp(DD);
-    %end
+    end
     [filas,columnas] = size(DD);
     coeficientes = zeros(columnas);
     for v=1:columnas
@@ -38,7 +38,7 @@ function p = NGRegresivo(x,y, mostrarPasos)
     %    disp(p);
     %end
     p = simplify(p);
-    %if (mostrarPasos == 1)
+    if (mostrarPasos == 1)
         disp('El grado del polinomio es:');
         disp(polynomialDegree(p));
         if(sonPuntosEquiespaciados(x))
@@ -46,5 +46,5 @@ function p = NGRegresivo(x,y, mostrarPasos)
         else
             disp('Los puntos ingresados NO son equiespaciados');
         end
-    %end
+    end
 end

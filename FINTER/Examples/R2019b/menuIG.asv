@@ -63,12 +63,11 @@ function mostrarPasos_Callback(hObject, eventdata, handles)
 % hObject    handle to mostrarPasos (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global e
 if e
     mostrarPasos;
     close(handles.figure1);
 else
-    msgbox('Primero debe calcular un polinomio!');
+    msgbox('Primero debe calcular un polinomio');
 end
     
 
@@ -77,7 +76,6 @@ function especializarK_Callback(hObject, eventdata, handles)
 % hObject    handle to especializarK (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global e
 if e
     especializarK;
     close(handles.figure1);

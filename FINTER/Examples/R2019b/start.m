@@ -78,6 +78,14 @@ varargout{1} = handles.output;
 
 % --- Executes on button press in comenzar.
 function comenzar_Callback(hObject, eventdata, handles)
+global i j x y t p e
+x = 1;
+y = 1;
+t = 1;
+p = 1;
+i = 1;
+j = 1;
+e = false;
 menuIG;
 close(handles.figure1);
 
