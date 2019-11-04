@@ -60,6 +60,12 @@ guidata(hObject, handles);
 
 % UIWAIT makes start wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
+global x y p t i
+x = [];
+y = [];
+p = [];
+t = 1;
+i = 1;
 axes(handles.logo)
 handles.imagen=imread('FINTER.png');
 imagesc(handles.imagen)

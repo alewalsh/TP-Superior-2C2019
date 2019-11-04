@@ -85,11 +85,15 @@ else
     msgbox('Primero debe calcular un polinomio!');
 end
 
-% --- Executes on button press in alterarValores.
-function alterarValores_Callback(hObject, eventdata, handles)
-% hObject    handle to alterarValores (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
+% --- Executes on button press in calcularPolinomio.
+function calcularPolinomio_Callback(hObject, eventdata, handles)
+global x y
+if length(x) > 1 && length(y) > 1
+    calculoPolinomio;
+    close(handles.figure1);
+else
+    msgbox('El polinomio debe contener al menos 2 puntos!');
+end
 
 
 % --- Executes on button press in reiniciar.
