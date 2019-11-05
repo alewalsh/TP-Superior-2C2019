@@ -99,10 +99,10 @@ end
 % --- Executes on button press in reiniciar.
 function reiniciar_Callback(hObject, eventdata, handles)
 global i j x y t p e
-x = 1;
-y = 1;
+x = [];
+y = [];
+p = [];
 t = 1;
-p = 1;
 i = 1;
 j = 1;
 e = false;

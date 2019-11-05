@@ -60,12 +60,6 @@ guidata(hObject, handles);
 
 % UIWAIT makes start wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
-global x y p t i
-x = [];
-y = [];
-p = [];
-t = 1;
-i = 1;
 axes(handles.logo)
 handles.imagen=imread('FINTER.png');
 imagesc(handles.imagen)
@@ -85,10 +79,10 @@ varargout{1} = handles.output;
 % --- Executes on button press in comenzar.
 function comenzar_Callback(hObject, eventdata, handles)
 global i j x y t p e
-x = 1;
-y = 1;
+x = [];
+y = [];
+p = [];
 t = 1;
-p = 1;
 i = 1;
 j = 1;
 e = false;
