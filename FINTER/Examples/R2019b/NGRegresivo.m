@@ -12,7 +12,7 @@ function p = NGRegresivo(x,y, mostrarPasos)
 	end
     %if (mostrarPasos == 1)
         disp('La matriz de diferencias divididas es:');
-        pasito=DD;
+        pasito=num2str(DD);
         disp(DD);
     %end
     [filas,columnas] = size(DD);
