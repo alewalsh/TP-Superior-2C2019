@@ -45,23 +45,30 @@ varargout{1} = handles.output;
 
 function buttonIngresarDatos_Callback(hObject, eventdata, handles)
 global x y i
-x(i) = str2double(get(handles.editX, 'String'));
-%texto = string(get(handles.text4,'String')) + newline + string(x(i)); 
-%set(handles.text4,'String', string(x(i)));
-y(i) = str2double(get(handles.editY, 'String'));
-%lista = get(handles.listbox2,'String');
-%nuevoParametro = string(x(i)) + "-" + string(y(j));
-%listaConNuevoItem = strvcat(lista, nuevoParametro);
-%set(handles.listbox2,'String',listaConNuevoItem);
+n = length(x);
+encontrado = false;
+for a=1:n
+    if x(a)== str2double(get(handles.editX, 'String'))
+        encontrado = true;
+    end
+end
 
-%Agregar elementos al listbox
-parXY = string(x(i)) + "-" + string(y(i));
-contenidoListbox = get(handles.listbox2,'string');
-longitudListbox = length(contenidoListbox);
-contenidoListbox{longitudListbox + 1} = parXY;
-set(handles.listbox2, 'String', contenidoListbox);
+if encontrado
+    warndlg("La X ya fue ingresada anteriormente.", "Advertencia");
+else
+    x(i) = str2double(get(handles.editX, 'String'));
+    y(i) = str2double(get(handles.editY, 'String'));
 
-i = i + 1;
+    %Agregar elementos al listbox
+    parXY = string(x(i)) + "-" + string(y(i));
+    contenidoListbox = get(handles.listbox2,'string');
+    longitudListbox = length(contenidoListbox);
+    contenidoListbox{longitudListbox + 1} = parXY;
+    set(handles.listbox2, 'String', contenidoListbox);
+
+    i = i + 1;
+end
+
 
 
 function editX_Callback(hObject, eventdata, handles)
@@ -145,20 +152,33 @@ if not(isempty(listaDeObjetos))
     valorSpliteado = split(valorSeleccionado, '-');
     valorX = string(valorSpliteado(1));
     valorY = string(valorSpliteado(2));
-    %Quitar elemento del array
+    %Valido que no haya repetidos
+    encontrado = false;
     n = length(x);
     for a=1:n
-        if string(x(a)) == valorX && string(y(a)) == valorY
-            x(a) = str2double(get(handles.editX, 'String'));;
-            y(a) = str2double(get(handles.editY, 'String'));;
-            break
+        if x(a)== str2double(get(handles.editX, 'String'))
+            encontrado = true;
         end
     end
-    %Quitar elemento del listbox
-    valorSeleccionado = get(handles.listbox2, 'Value');
-    parXY = get(handles.editX, 'String') + "-" + get(handles.editY, 'String');
-    listaDeObjetos{valorSeleccionado} = parXY;
-    set(handles.listbox2, 'String', listaDeObjetos, 'Value', 1);
+
+    if encontrado
+        warndlg("La X ya fue ingresada anteriormente.", "Advertencia");
+    else
+    %Modificar elemento del array
+        n = length(x);
+        for a=1:n
+            if string(x(a)) == valorX && string(y(a)) == valorY
+                x(a) = str2double(get(handles.editX, 'String'));
+                y(a) = str2double(get(handles.editY, 'String'));
+                break
+            end
+        end
+        %Modificar elemento del listbox
+        valorSeleccionado = get(handles.listbox2, 'Value');
+        parXY = get(handles.editX, 'String') + "-" + get(handles.editY, 'String');
+        listaDeObjetos{valorSeleccionado} = parXY;
+        set(handles.listbox2, 'String', listaDeObjetos, 'Value', 1);
+    end
 else
     warndlg("La lista se encuentra vacía.", "Advertencia");
 end

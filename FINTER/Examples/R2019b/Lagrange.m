@@ -17,7 +17,7 @@ function p = Lagrange(x,y,mostrarPasos)
             disp(strcat("L", num2str(i-1),"(x) = ", char(L)));
         %end
         else
-            pasito=strcat(pasito,"     ","L", num2str(i-1),"(x) = ", char(L));
+            pasito=pasito + newline + "L" + num2str(i-1) + "(x) = "+ char(L);
             disp(strcat("L", num2str(i-1),"(x) = ", char(L)));
         end
         p = p+L*y(i);
