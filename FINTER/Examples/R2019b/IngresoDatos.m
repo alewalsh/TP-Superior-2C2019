@@ -182,3 +182,10 @@ if not(isempty(listaDeObjetos))
 else
     warndlg("La lista se encuentra vacía.", "Advertencia");
 end
+
+
+% --- Executes on button press in pushbutton9.
+function pushbutton9_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton9 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
