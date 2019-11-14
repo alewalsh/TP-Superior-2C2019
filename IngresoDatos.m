@@ -22,8 +22,9 @@ end
 function IngresoDatos_OpeningFcn(hObject, eventdata, handles, varargin)
 handles.output = hObject;
 guidata(hObject, handles);
-global p x y
+global p e x y
 p = [];
+e = false;
 %Agregar todos los valores existentes de x e y al listbox
 n = length(x);
 if n > 0
