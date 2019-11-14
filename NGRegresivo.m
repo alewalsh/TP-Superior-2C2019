@@ -1,5 +1,5 @@
 function p = NGRegresivo(x,y, mostrarPasos)
-    global t pasito;
+    global t pasito coef;
     p=0;
     t = sym('x');
 	n = length(x);
@@ -21,8 +21,9 @@ function p = NGRegresivo(x,y, mostrarPasos)
         coeficientes(v) = DD(filas,v);
     end
     %if (mostrarPasos == 1)
-    %   disp('Los coeficientes del polinomio son:');
-    %    disp(coeficientes(:,1));
+    disp('Los coeficientes del polinomio son:');
+    coef = mat2str(coeficientes(:,1));
+    disp(coeficientes(:,1));
     %end
     for z=1:length(coeficientes)
         pol2 = 1;

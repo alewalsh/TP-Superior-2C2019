@@ -1,5 +1,6 @@
 function p = Lagrange(x,y,mostrarPasos)
-    global t pasito;
+    global t pasito coef;
+    coef = '';
     p=0;
     t = sym('x'); % creo la variable simbólica x para reemplazar en la función
     n = length(x);
