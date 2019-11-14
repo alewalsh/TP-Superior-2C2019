@@ -77,7 +77,7 @@ handles.x = str2double(get(hObject, 'String'));
 
 if isnan(handles.x)
     set(hObject, 'String', 0);
-    errordlg('X debe ser un número!','Error');
+    errordlg('X debe ser un nÃºmero!','Error');
 end
 
 
@@ -92,7 +92,7 @@ function editY_Callback(hObject, eventdata, handles)
 y = str2double(get(hObject, 'String'));
 if isnan(y)
     set(hObject, 'String', 0);
-    errordlg('Y debe ser un número!','Error');
+    errordlg('Y debe ser un nÃºmero!','Error');
 end
 
 
@@ -119,7 +119,7 @@ end
 
 function buttonBorrar_Callback(hObject, eventdata, handles)
 %Quitar elementos al listbox
-global x y
+global x y i
 listaDeObjetos = get(handles.listbox2, 'String');
 if not(isempty(listaDeObjetos))
     valorSeleccionado = string(listaDeObjetos(get(handles.listbox2, 'Value')));
@@ -132,6 +132,7 @@ if not(isempty(listaDeObjetos))
         if string(x(a)) == valorX && string(y(a)) == valorY
             x(a) = [];
             y(a) = [];
+            i = i -1;
             break
         end
     end
@@ -140,7 +141,7 @@ if not(isempty(listaDeObjetos))
     listaDeObjetos(valorSeleccionado) = [];
     set(handles.listbox2, 'String', listaDeObjetos, 'Value', 1);
 else
-    warndlg("La lista se encuentra vacía.", "Advertencia");
+    warndlg("La lista se encuentra vacÃ­a.", "Advertencia");
 end
 
 
@@ -181,7 +182,7 @@ if not(isempty(listaDeObjetos))
         set(handles.listbox2, 'String', listaDeObjetos, 'Value', 1);
     end
 else
-    warndlg("La lista se encuentra vacía.", "Advertencia");
+    warndlg("La lista se encuentra vacÃ­a.", "Advertencia");
 end
 
 
