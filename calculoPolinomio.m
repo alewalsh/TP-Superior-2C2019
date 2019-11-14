@@ -80,17 +80,17 @@ radioButtonSeleccionado = get(handles.uiGroupMetodo, 'SelectedObject');
 valorSeleccionado = string(get(radioButtonSeleccionado, 'String'));
 disp(valorSeleccionado);
 switch valorSeleccionado
-    case 'Método de Lagrange'
+    case 'Lagrange'
         p = [];
         p = Lagrange(x,y,1);
         e = true;
-    case 'Método de N-G Progresivo'
+    case 'N-G Progresivo'
         p = [];
         p = NGProgresivo(x,y,1);
         e = true;
-    case 'Método de N-G Regresivo'
+    case 'N-G Regresivo'
         p = [];
-        p = NGProgresivo(x,y,1);
+        p = NGRegresivo(x,y,1);
         e = true;
 end
 texto2=strcat('P(x) =  ', char(p));
