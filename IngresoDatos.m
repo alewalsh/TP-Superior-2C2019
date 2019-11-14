@@ -57,27 +57,29 @@ end
 if encontrado
     warndlg("La X ya fue ingresada anteriormente.", "Advertencia");
 else
-    x(i) = str2double(get(handles.editX, 'String'));
-    y(i) = str2double(get(handles.editY, 'String'));
+    x(i) = str2double(strrep(get(handles.editX, 'String'), ',', '.'));
+    y(i) = str2double(strrep(get(handles.editY, 'String'), ',', '.'));
 
-    %Agregar elementos al listbox
-    parXY = string(x(i)) + "-" + string(y(i));
-    contenidoListbox = get(handles.listbox2,'string');
-    longitudListbox = length(contenidoListbox);
-    contenidoListbox{longitudListbox + 1} = parXY;
-    set(handles.listbox2, 'String', contenidoListbox);
+    if(~isnan(x(i)) && ~isnan(y(i))) 
+        %Agregar elementos al listbox
+        parXY = string(x(i)) + "-" + string(y(i));
+        contenidoListbox = get(handles.listbox2,'string');
+        longitudListbox = length(contenidoListbox);
+        contenidoListbox{longitudListbox + 1} = parXY;
+        set(handles.listbox2, 'String', contenidoListbox);
 
-    i = i + 1;
+        i = i + 1;
+    end
 end
 
 
 
 function editX_Callback(hObject, eventdata, handles)
 handles.x = str2double(get(hObject, 'String'));
-
 if isnan(handles.x)
-    set(hObject, 'String', 0);
-    errordlg('X debe ser un número!','Error');
+    errordlg('X debe ser un numero!','Error');
+else
+    
 end
 
 
@@ -91,8 +93,7 @@ end
 function editY_Callback(hObject, eventdata, handles)
 y = str2double(get(hObject, 'String'));
 if isnan(y)
-    set(hObject, 'String', 0);
-    errordlg('Y debe ser un número!','Error');
+    errordlg('Y debe ser un numero!','Error');
 end
 
 
