@@ -90,7 +90,7 @@ switch valorSeleccionado
         e = true;
     case 'Método de N-G Regresivo'
         p = [];
-        p = NGProgresivo(x,y,1);
+        p = NGRegresivo(x,y,1);
         e = true;
 end
 texto2=strcat('P(x) =  ', char(p));

@@ -1,5 +1,5 @@
 function p = NGProgresivo(x,y, mostrarPasos)
-    global t pasito;
+    global t pasito coef;
     p=0;
     t = sym('x');
 	n = length(x);
@@ -17,8 +17,9 @@ function p = NGProgresivo(x,y, mostrarPasos)
  %   end
     coeficientes = diag(DD);
     %if (mostrarPasos == 1)
-    %    disp('Los coeficientes del polinomio son:');
-    %    disp(coeficientes);
+    disp('Los coeficientes del polinomio son:');
+    coef = mat2str(coeficientes);
+    disp(coeficientes);
     %end
     for z=1:length(coeficientes)
         pol2 = 1;

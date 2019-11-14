@@ -60,7 +60,7 @@ guidata(hObject, handles);
 
 % UIWAIT makes mostrarPasos wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
-global x p pasito
+global x p pasito coef;
 texto=polynomialDegree(p);
 set(handles.result,'String',texto);
 if(sonPuntosEquiespaciados(x))
@@ -72,6 +72,7 @@ else
 end
 set(handles.equiespaciado,'String',texto1);
 set(handles.pasos,'String',pasito);
+set(handles.coeficientes,'String', coef);
 
 texto2=strcat('P(x) =  ', char(p));
 disp(strcat('P(x) = ', char(p)));
