@@ -58,7 +58,6 @@ handles.output = hObject;
 % Update handles structure
 guidata(hObject, handles);
 global p
-
 texto=strcat('P(x) =  ', char(p));
 disp(strcat('P(x) = ', char(p)));
 set(handles.polinomio,'String',texto);
@@ -115,7 +114,7 @@ function calcular_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 global p t
     
-k= handles.metricdata.k;
+k= str2double(get(handles.laK,'string'));
 disp(char(subs(p, t, k))); % subs sustituye la variable simbólica t en p por el valor k
 resultado = char(subs(p, t, k));
 set(handles.resultado, 'String', resultado);
